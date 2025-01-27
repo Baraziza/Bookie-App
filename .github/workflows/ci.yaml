@@ -30,7 +30,7 @@ jobs:
           scan-type: 'fs'
           scan-ref: '.'
           format: 'table'
-          exit-code: '0'
+          exit-code: '1'
           severity: 'CRITICAL,HIGH'
 
       - name: Login to Docker Hub
@@ -54,7 +54,7 @@ jobs:
         with:
           image-ref: 'baraziza/bookie:${{ github.sha }}'
           format: 'table'
-          exit-code: '0'
+          exit-code: '1'
           severity: 'CRITICAL,HIGH'
 
       - name: Update GitOps repository
