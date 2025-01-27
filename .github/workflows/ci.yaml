@@ -41,13 +41,11 @@ jobs:
 
       - name: Update GitOps repository
         run: |
-          git clone https://github.com/Baraziza/Bookie-GitOps.git
+          git clone https://${{ secrets.GITOPS_PAT }}@github.com/Baraziza/Bookie-GitOps.git
           cd Bookie-GitOps
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           sed -i "s|image: baraziza/bookie:.*|image: baraziza/bookie:${{ github.sha }}|" k8s-manifests/base/bookie/bookie-deployment.yaml
           git add .
           git commit -m "Update image tag to ${{ github.sha }}"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }} 
+          git push 
