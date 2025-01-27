@@ -10,4 +10,5 @@ COPY . .
 
 EXPOSE 5000
 
+# Added for CI/CD test
 CMD ["python", "run.py"]
